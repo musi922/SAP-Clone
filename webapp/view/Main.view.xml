@@ -34,7 +34,7 @@
             <VBox>
                 <TabContainer>
                     <items>
-                        <TabContainerItem name="2014 GOALS PLAN" />
+                        <TabContainerItem name="2025 GOALS PLAN" />
                         <TabContainerItem name="PERSONAL" />
                         <TabContainerItem name="EMPLOYMENT" />
                     </items>
@@ -56,9 +56,13 @@
                                     labelSpanL="4"
                                     labelSpanM="4"
                                     labelSpanS="12">
+									
                                     <Label text="Bank Transfer"/>
                                     <Text text="Sparkasse Heinfeld, Germany"/>
+									<Label text="Amount of money"/>
+									<Text text="$20000"/>
                                     <Text text="Account: 458784545"/>
+									<Button text="Pay Now" type="Emphasized" press="onPayPress"/>
                                 </form:SimpleForm>
                                 <Link text="See more" class="sapUiTinyMarginTop"/>
                             </VBox>
@@ -84,11 +88,36 @@
                                     <Label text="Employee Class"/>
                                     <Text text="Employee"/>
                                 </form:SimpleForm>
+								<Link text="See more" class="sapUiTinyMarginTop"/>
                             </VBox>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
         </uxap:sections>
+		
+		
     </uxap:ObjectPageLayout>
+	<Dialog id="payDialog" title="Payement Details" type="Message" afterClose="onDialogClose"  >
+	<VBox >
+	<form:SimpleForm >
+	<Label text="Enter Amount"/>
+	<Input id="payementAmount" placeholder="Type Amount"/>
+	<Label text="Select Payement Method"/>
+	<Select id="payementMethod">
+	<items>
+	<core:Item key="card" text="Credit/Debit Card"></core:Item>
+	<core:Item key="paypal" text="Paypal"></core:Item>
+	<core:Item key="bank" text="Bank Transfer"></core:Item>
+	</items>
+	</Select>
+	</form:SimpleForm>
+	</VBox>
+	<beginButton>
+	<Button text="Confirm" press="onConfirmPayement"></Button>
+	</beginButton>
+	<endButton>
+	<Button text="Cancel" press="onCancelPayement"></Button>
+	</endButton>
+	</Dialog>
 </mvc:View>
